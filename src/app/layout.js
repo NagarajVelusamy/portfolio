@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import NavBar from "@/components/NavBar";
+import { twJoin } from "tailwind-merge";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={twJoin(
+          inter.className,
+          "h-screen mx-auto max-w-screen-lg px-4 bg-gradient-to-b from-blue-50 to-red-50 bg-no-repeat"
+        )}
+      >
+        <NavBar />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
